@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://capture_menu_scene_01"]
+
+[ext_resource type="PackedScene" path="res://scenes/MainMenu.tscn" id="1_menu"]
+[ext_resource type="Script" path="res://scripts/capture_menu.gd" id="2_capturer"]
+
+[node name="ScreenshotMenuScene" type="Node"]
+
+[node name="MainMenu" parent="." instance=ExtResource("1_menu")]
+
+[node name="Capturer" type="Node" parent="."]
+script = ExtResource("2_capturer")

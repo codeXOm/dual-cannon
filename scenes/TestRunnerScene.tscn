@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://test_runner_scene_01"]
+
+[ext_resource type="PackedScene" path="res://scenes/Game.tscn" id="1_game"]
+[ext_resource type="Script" path="res://scripts/test_runner_scene.gd" id="2_runner"]
+
+[node name="TestRunnerScene" type="Node2D"]
+
+[node name="Game" parent="." instance=ExtResource("1_game")]
+
+[node name="Runner" type="Node2D" parent="."]
+script = ExtResource("2_runner")

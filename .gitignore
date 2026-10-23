@@ -1,0 +1,30 @@
+# Godot 4 project ignore rules
+.godot/
+*.translation
+
+# Godot editor binaries and large executables (GitHub 100MB limit)
+Godot_*/
+build/*.exe
+*.exe
+
+# Local build artifacts
+build/*.pck
+
+# Temporary test logs and capture files
+*.txt
+*.log
+cap_*.txt
+test_*.txt
+export_*.txt
+
+# Large personal media
+*.mp4
+
+# Vercel & Node
+.vercel
+node_modules/
+.env*.local
+
+# OS files
+.DS_Store
+Thumbs.db

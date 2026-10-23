@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://capture_trajectory_scene_01"]
+
+[ext_resource type="PackedScene" path="res://scenes/Game.tscn" id="1_game"]
+[ext_resource type="Script" path="res://scripts/capture_trajectory_test.gd" id="2_capture"]
+
+[node name="ScreenshotTrajectoryScene" type="Node2D"]
+
+[node name="Game" parent="." instance=ExtResource("1_game")]
+
+[node name="Capturer" type="Node" parent="."]
+script = ExtResource("2_capture")

@@ -1,0 +1,352 @@
+[gd_scene format=3 uid="uid://hud_scene_01"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_capsule"]
+bg_color = Color(0.95, 0.96, 0.98, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.95, 0.96, 0.98, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.08, 0.18, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.25, 0.45, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 12
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_hud")
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="FPSLabel" type="Label" parent="TopBar"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = 18.0
+offset_right = 100.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.65, 0.65, 0.75, 0.6)
+theme_override_font_sizes/font_size = 14
+text = "FPS 60"
+
+[node name="CenterBox" type="HBoxContainer" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 54.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="LevelPill" type="PanelContainer" parent="TopBar/CenterBox"]
+custom_minimum_size = Vector2(144, 36)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_capsule")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/CenterBox/LevelPill"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="LevelLabel" type="Label" parent="TopBar/CenterBox/LevelPill/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.12, 0.16, 1)
+theme_override_font_sizes/font_size = 14
+text = "LVL 1 - BEGINNER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScorePill" type="PanelContainer" parent="TopBar/CenterBox"]
+custom_minimum_size = Vector2(76, 36)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_capsule")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/CenterBox/ScorePill"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="ScoreLabel" type="Label" parent="TopBar/CenterBox/ScorePill/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.12, 0.16, 1)
+theme_override_font_sizes/font_size = 18
+text = "0 - 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WindPill" type="PanelContainer" parent="TopBar/CenterBox"]
+custom_minimum_size = Vector2(106, 36)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_capsule")
+
+[node name="Margin" type="MarginContainer" parent="TopBar/CenterBox/WindPill"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="WindLabel" type="Label" parent="TopBar/CenterBox/WindPill/Margin"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.12, 0.16, 1)
+theme_override_font_sizes/font_size = 14
+text = "NO WIND"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightButtons" type="HBoxContainer" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_constants/separation = 12
+alignment = 2
+
+[node name="PauseButton" type="Button" parent="TopBar/RightButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.15, 0.15, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "PAUSE"
+
+[node name="ExitButton" type="Button" parent="TopBar/RightButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(74, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.15, 0.15, 0.2, 1)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "EXIT"
+
+[node name="BottomBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ModeLabel" type="Label" parent="BottomBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -32.0
+offset_right = 150.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.65, 0.65, 0.8, 0.5)
+theme_override_font_sizes/font_size = 13
+text = "LOCAL 2-PLAYER"
+horizontal_alignment = 1
+
+[node name="ControlsBlue" type="Label" parent="BottomBar"]
+layout_mode = 1
+offset_left = 24.0
+offset_top = -34.0
+offset_right = 380.0
+offset_bottom = -10.0
+theme_override_colors/font_color = Color(0.0, 0.82, 0.95, 0.8)
+theme_override_font_sizes/font_size = 13
+text = "Blue: Hold [SPACE] to Lock & Charge | Release to Fire"
+
+[node name="ControlsRed" type="Label" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -380.0
+offset_top = -34.0
+offset_right = -24.0
+offset_bottom = -10.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1.0, 0.45, 0.45, 0.8)
+theme_override_font_sizes/font_size = 13
+text = "Red: Hold [ENTER] to Lock & Charge | Release to Fire"
+horizontal_alignment = 2
+
+[node name="PauseOverlay" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -140.0
+offset_right = 160.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="PauseOverlay"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="PauseOverlay/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseOverlay/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 15
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="PauseOverlay/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 15
+text = "RESTART MATCH"
+
+[node name="SoundToggleButton" type="Button" parent="PauseOverlay/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 15
+text = "SOUND: ON"
+
+[node name="MenuButton" type="Button" parent="PauseOverlay/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 15
+text = "MAIN MENU"
+
+[node name="LevelBanner" type="Control" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -180.0
+offset_right = 220.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="LevelBanner"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="LevelBanner/Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="LevelBanner/Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="BannerLevelTitle" type="Label" parent="LevelBanner/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.25, 0.9, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "LEVEL 1"
+horizontal_alignment = 1
+
+[node name="BannerDifficulty" type="Label" parent="LevelBanner/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.35, 1)
+theme_override_font_sizes/font_size = 15
+text = "BEGINNER TERRAIN"
+horizontal_alignment = 1
+
+[node name="BannerDesc" type="Label" parent="LevelBanner/Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.85, 0.85)
+theme_override_font_sizes/font_size = 12
+text = "Gentle hills & stable platforms"
+horizontal_alignment = 1

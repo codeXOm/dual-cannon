@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://game_scene_01"]
+
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_controller"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="2_bg"]
+[ext_resource type="PackedScene" path="res://scenes/Terrain.tscn" id="3_terrain"]
+[ext_resource type="PackedScene" path="res://scenes/Cannon.tscn" id="4_cannon"]
+[ext_resource type="Script" path="res://scripts/ai_controller.gd" id="5_ai"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="6_hud"]
+[ext_resource type="PackedScene" path="res://scenes/GameOver.tscn" id="7_game_over"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_controller")
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("2_bg")
+
+[node name="Terrain" parent="." instance=ExtResource("3_terrain")]
+
+[node name="Trajectories" type="Node2D" parent="."]
+
+[node name="Cannons" type="Node2D" parent="."]
+
+[node name="BlueCannon" parent="Cannons" instance=ExtResource("4_cannon")]
+position = Vector2(190, 508)
+player_id = 1
+
+[node name="RedCannon" parent="Cannons" instance=ExtResource("4_cannon")]
+position = Vector2(1090, 508)
+player_id = 2
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="AIController" type="Node" parent="."]
+script = ExtResource("5_ai")
+
+[node name="HUD" parent="." instance=ExtResource("6_hud")]
+
+[node name="GameOver" parent="." instance=ExtResource("7_game_over")]

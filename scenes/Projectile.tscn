@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://projectile_scene_01"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_projectile"]
+[ext_resource type="Script" path="res://scripts/rocket_visuals.gd" id="2_rocket_mesh"]
+
+[sub_resource type="Gradient" id="Gradient_trail"]
+colors = PackedColorArray(0.9, 0.92, 0.96, 0.75, 0.6, 0.65, 0.75, 0)
+
+[sub_resource type="Gradient" id="Gradient_particles"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(1, 1, 1, 0.9, 0.8, 0.82, 0.9, 0.5, 0.5, 0.5, 0.6, 0)
+
+[node name="Projectile" type="Node2D"]
+script = ExtResource("1_projectile")
+
+[node name="TrailLine" type="Line2D" parent="."]
+width = 3.5
+gradient = SubResource("Gradient_trail")
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TrailParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-7, 0)
+amount = 24
+lifetime = 0.5
+preprocess = 0.05
+spread = 25.0
+gravity = Vector2(0, 40)
+initial_velocity_min = 10.0
+initial_velocity_max = 35.0
+radial_accel_min = -5.0
+radial_accel_max = 5.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_particles")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="RocketMesh" type="Node2D" parent="Visuals"]
+script = ExtResource("2_rocket_mesh")
